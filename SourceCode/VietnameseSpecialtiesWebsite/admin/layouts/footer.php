@@ -31,6 +31,11 @@
 
         <!-- Custom scripts for all pages-->
         <script src="/VietnameseSpecialtiesWebsite/SourceCode/VietnameseSpecialtiesWebsite/public/admin/js/sb-admin.min.js"></script>
+        <!-- Page level plugin JavaScript-->
+        <script src="/VietnameseSpecialtiesWebsite/SourceCodeVietnameseSpecialtiesWebsite/public/admin/vendor/datatables/jquery.dataTables.js"></script>
+        <script src="/VietnameseSpecialtiesWebsite/SourceCodeVietnameseSpecialtiesWebsite/public/admin/vendor/datatables/dataTables.bootstrap4.js"></script>
+        <!-- Demo scripts for this page-->
+        <script src="/VietnameseSpecialtiesWebsite/SourceCode/VietnameseSpecialtiesWebsite/public/admin/js/demo/datatables-demo.js"></script>
 
     </body>
 

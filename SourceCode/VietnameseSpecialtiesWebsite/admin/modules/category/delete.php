@@ -1,9 +1,8 @@
 <?php 
-    require_once __DIR__. '\autoload\autoload.php';
-    $category = $db->fetchAll("category");
+    require_once __DIR__. '\..\..\autoload\autoload.php';
 ?>
 
-<?php require_once __DIR__. '\layouts\header.php';?>
+<?php require_once __DIR__. '\..\..\layouts\header.php';?>
 
         <div id="wrapper">
 
@@ -56,10 +55,9 @@
                     </ol>
 
                     <!-- Page Content -->
-                    <h1>Blank Page</h1>
+                    <h1>Delete Page</h1>
                     <hr>
                     <p>This is a great starting point for new custom pages.</p>
-                    <?php var_dump($category); ?>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -77,4 +75,4 @@
 
         </div>
         <!-- /#wrapper -->
-<?php require_once __DIR__.'\layouts\footer.php';?>
+<?php require_once __DIR__.'\..\..\layouts\footer.php';?>
