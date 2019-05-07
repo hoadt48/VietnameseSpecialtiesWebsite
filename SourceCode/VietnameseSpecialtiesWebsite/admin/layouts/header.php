@@ -12,13 +12,13 @@
         <title>SB Admin - Blank Page</title>
 
         <!-- Custom fonts for this template-->
-        <link href="/VietnameseSpecialtiesWebsite/SourceCode/VietnameseSpecialtiesWebsite/public/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo base_url() ?>public/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
         <!-- Page level plugin CSS-->
-        <link href="/VietnameseSpecialtiesWebsite/SourceCode/VietnameseSpecialtiesWebsite/public/admin/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+        <link href="<?php echo base_url() ?>public/admin/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
         <!-- Custom styles for this template-->
-        <link href="/VietnameseSpecialtiesWebsite/SourceCode/VietnameseSpecialtiesWebsite/public/admin/css/sb-admin.css" rel="stylesheet">
+        <link href="<?php echo base_url() ?>public/admin/css/sb-admin.css" rel="stylesheet">
 
     </head>
 
@@ -26,7 +26,7 @@
 
         <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-            <a class="navbar-brand mr-1" href="index.html">Start Bootstrap</a>
+            <a class="navbar-brand mr-1" href="<?php echo admin_page() ?>">Trang quản trị</a>
 
             <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
                 <i class="fas fa-bars"></i>
@@ -84,3 +84,19 @@
             </ul>
 
         </nav>
+        <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo admin_page() ?>">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Trang quản trị</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo modules("category") ?>">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Danh mục</span></a>
+        </li>
+    </ul>

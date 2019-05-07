@@ -23,19 +23,19 @@
         </div>
 
         <!-- Bootstrap core JavaScript-->
-        <script src="/VietnameseSpecialtiesWebsite/SourceCode/VietnameseSpecialtiesWebsite/public/admin/vendor/jquery/jquery.min.js"></script>
-        <script src="/VietnameseSpecialtiesWebsite/SourceCode/VietnameseSpecialtiesWebsite/public/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="<?php echo base_url() ?>public/admin/vendor/jquery/jquery.min.js"></script>
+        <script src="<?php echo base_url() ?>public/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
         <!-- Core plugin JavaScript-->
-        <script src="/VietnameseSpecialtiesWebsite/SourceCodeVietnameseSpecialtiesWebsite/public/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="<?php echo base_url() ?>public/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
         <!-- Custom scripts for all pages-->
-        <script src="/VietnameseSpecialtiesWebsite/SourceCode/VietnameseSpecialtiesWebsite/public/admin/js/sb-admin.min.js"></script>
+        <script src="<?php echo base_url() ?>public/admin/js/sb-admin.min.js"></script>
         <!-- Page level plugin JavaScript-->
-        <script src="/VietnameseSpecialtiesWebsite/SourceCodeVietnameseSpecialtiesWebsite/public/admin/vendor/datatables/jquery.dataTables.js"></script>
-        <script src="/VietnameseSpecialtiesWebsite/SourceCodeVietnameseSpecialtiesWebsite/public/admin/vendor/datatables/dataTables.bootstrap4.js"></script>
+        <script src="<?php echo base_url() ?>public/admin/vendor/datatables/jquery.dataTables.js"></script>
+        <script src="<?php echo base_url() ?>public/admin/vendor/datatables/dataTables.bootstrap4.js"></script>
         <!-- Demo scripts for this page-->
-        <script src="/VietnameseSpecialtiesWebsite/SourceCode/VietnameseSpecialtiesWebsite/public/admin/js/demo/datatables-demo.js"></script>
+        <script src="<?php echo base_url() ?>public/admin/js/demo/datatables-demo.js"></script>
 
     </body>
 
