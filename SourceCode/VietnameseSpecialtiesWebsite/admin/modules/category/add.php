@@ -2,11 +2,12 @@
 require_once __DIR__ . '\..\..\autoload\autoload.php';
 $open = "category";
 $data = [
-            "name" => postInput('name')
+    "name" => postInput('name'),
+    "slug" => to_slug(postInput("name"))
 ];
 $error = [];
 if (postInput('name') == '') {
-    $error['name'] = " Làm ơn nhập lại tên danh mục!";
+    $error['name'] = addPageMessage['empty'];
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = postInput("name");
@@ -14,14 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 if (empty($error['name'])) {
     $id_insert = $db->insert("category", $data);
-    if($id_insert > 0)
-    {
-        $_SESSION['success'] = " Thêm mới thành công ";
+    if ($id_insert > 0) {
+        $_SESSION['success'] = addPageMessage['succes'];
         redirectAdmin("category");
-    }
-    else
-    {
-        $_SESSION['error'] = " Thêm mới thất bại ";
+    } else {
+        $_SESSION['error'] = addPageMessage['error'];
     }
 }
 ?>
@@ -37,7 +35,7 @@ if (empty($error['name'])) {
                 <a href="<?php echo admin_page() ?>">Dashboard</a>
             </li>
             <li class="breadcrumb-item">
-                <a href="<?php echo admin_page() ?>">Danh mục</a>
+                <a href="<?php echo modules("category") ?>">Danh mục</a>
             </li>
             <li class="breadcrumb-item active">
                 <i class="fa fa-file"></i> Thêm mới
@@ -66,7 +64,7 @@ if (empty($error['name'])) {
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-primary btn-block" type="submit">Register</button>
+                    <button class="btn btn-primary btn-block" type="submit">Xác nhận</button>
                 </form>
             </div>
         </div>

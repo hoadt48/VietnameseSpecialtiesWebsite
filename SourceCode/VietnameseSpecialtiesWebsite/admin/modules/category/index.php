@@ -20,21 +20,30 @@ $category = $db->fetchAll("category");
                 <a href="add.php">Thêm mới</a>
             </li>
         </ol>
-        <?php if (isset($_SESSION['success'])) : ?>
         <!-- Breadcrumbs-->
         <div class="clearfix">
-            <li class="alert alert-success">
-                <?php echo $_SESSION['success'];
+            <?php if (isset($_SESSION['success'])): ?>
+                <li class="alert alert-success">
+                    <?php
+                    echo $_SESSION['success'];
                     unset($_SESSION['success']);
-                ?>
-            </li>
+                    ?>
+                </li>
+            <?php endif; ?>
+            <?php if (isset($_SESSION['error'])): ?>
+                <li class="alert alert-danger">
+                    <?php
+                    echo $_SESSION['error'];
+                    unset($_SESSION['error']);
+                    ?>
+                </li>
+            <?php endif; ?>
         </div>
-        <?php endif?>
         <!-- Page Content --> 
         <div class="card mb-3">
             <div class="card-header">
                 <i class="fas fa-table"></i>
-                Data Table Example</div>
+                Danh mục</div>
             <div class="card-body">
                 <div class="table-responsive">
                     <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" role="grid" aria-describedby="dataTable_info" style="width: 100%;" width="100%" cellspacing="0">
@@ -51,8 +60,8 @@ $category = $db->fetchAll("category");
                                                     <td><?php echo $item['slug']?></td>
                                                     <td><?php echo $item['created_at']?></td>
                                                     <td>
-                                                        <a class="btn btn-info" href="edit.php"><i class="fa fa-edit"> </i> Sửa</a>
-                                                        <a class="btn btn-danger" href="delete.php"><i class="fa fa-times"> </i> Xoá</a>
+                                                        <a class="btn btn-info" href="edit.php?id=<?php echo $item['id']?>"><i class="fa fa-edit"> </i> Sửa</a>
+                                                        <a class="btn btn-danger" href="delete.php?id=<?php echo $item['id']?>"><i class="fa fa-times"> </i> Xoá</a>
                                                     </td>
                                                 </tr>
                                         <?php $stt++; endforeach;?>
