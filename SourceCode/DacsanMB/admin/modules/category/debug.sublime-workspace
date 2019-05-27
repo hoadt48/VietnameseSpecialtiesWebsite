@@ -1,0 +1,497 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"_",
+				"_POST"
+			],
+			[
+				"_P",
+				"_post\tCI - $_POST"
+			],
+			[
+				"col-sm",
+				"col-sm-2 \tBootstrap 4 Class"
+			],
+			[
+				"btn-s",
+				"btn-success \tBootstrap 4 Class"
+			],
+			[
+				"row",
+				"row \tBootstrap 4 Class"
+			],
+			[
+				"va",
+				"var_dump"
+			],
+			[
+				"li",
+				"library\tCI - New Library"
+			],
+			[
+				"new",
+				"new"
+			],
+			[
+				"ca",
+				"cart"
+			],
+			[
+				"S",
+				"Session"
+			],
+			[
+				"to",
+				"totalPrice"
+			],
+			[
+				"vi",
+				"view"
+			],
+			[
+				"fo",
+				"font-size\tproperty"
+			],
+			[
+				"sp",
+				"sptt"
+			],
+			[
+				"id",
+				"id_type"
+			],
+			[
+				"w",
+				"where"
+			],
+			[
+				"Re",
+				"Request"
+			],
+			[
+				"Product",
+				"ProductType"
+			],
+			[
+				"lo",
+				"loai_sp"
+			],
+			[
+				"f",
+				"font-size\tproperty"
+			],
+			[
+				"hi",
+				"height\tAttr"
+			],
+			[
+				"p",
+				"paginate"
+			],
+			[
+				"img",
+				"image"
+			],
+			[
+				"print",
+				"printer_list"
+			],
+			[
+				"th",
+				"this\tPHP: $this->"
+			],
+			[
+				"da",
+				"database"
+			],
+			[
+				"gi",
+				"giatien"
+			],
+			[
+				"so",
+				"sodienthoai"
+			],
+			[
+				"inser",
+				"dba_insert"
+			],
+			[
+				"Ad",
+				"AddData_model"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"en",
+				"enctype\tAttr"
+			],
+			[
+				"btn",
+				"btn-success \tBootstrap 4 Class"
+			],
+			[
+				"ur",
+				"url"
+			],
+			[
+				"ar",
+				"array"
+			],
+			[
+				"bo",
+				"border-bottom\tproperty"
+			],
+			[
+				"font",
+				"font-family\tproperty"
+			],
+			[
+				"text-a",
+				"text-align\tproperty"
+			],
+			[
+				"pu",
+				"public"
+			],
+			[
+				"load",
+				"load_model\tCI - Load Model"
+			],
+			[
+				"for",
+				"foreach\tforeach …"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"i",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 164.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/E/xampp/htdocs/DacsanMB/admin/modules/category"
+	],
+	"file_history":
+	[
+		"/E/xampp/htdocs/DacsanMB/admin/modules/category/add.php",
+		"/E/xampp/htdocs/DacsanMB/admin/modules/category/debug.sublime-project",
+		"/C/Users/MyPC/Desktop/VietnameseSpecialtiesWebsite/SourceCode/VietnameseSpecialtiesWebsite/admin/modules/category/add.php",
+		"/E/xampp/htdocs/DacsanMB/admin/index.php",
+		"/E/xampp/htdocs/DacsanMB/admin/layouts/header.php",
+		"/E/xampp/htdocs/DacsanMB/admin/autoload/autoload.php",
+		"/E/xampp/htdocs/DacsanMB/admin/modules/category/index.php",
+		"/E/xampp/htdocs/DacsanMB/index.php",
+		"/E/xampp/htdocs/DacsanMB/libraries/function.php",
+		"/E/xampp/htdocs/DacsanMB/libraries/database.php",
+		"/E/xampp/htdocs/DacsanMB/admin/layouts/footer.php",
+		"/C/Users/MyPC/Desktop/VietnameseSpecialtiesWebsite/SourceCode/VietnameseSpecialtiesWebsite/autoload/autoload.php",
+		"/E/xampp/htdocs/DacsanMB/admin/modules/category/delete.php",
+		"/E/xampp/htdocs/DacsanMB/admin/modules/category/edit.php",
+		"/E/xampp/htdocs/DacsanMB/autoload/autoload.php",
+		"/C/Users/MyPC/Desktop/VietnameseSpecialtiesWebsite/SourceCode/VietnameseSpecialtiesWebsite/admin/autoload/autoload.php",
+		"/E/xampp/htdocs/DacsanMB/admin/autoload",
+		"/C/Users/MyPC/Desktop/VietnameseSpecialtiesWebsite/SourceCode/VietnameseSpecialtiesWebsite/admin/modules/category/index.php",
+		"/C/Users/MyPC/Desktop/VietnameseSpecialtiesWebsite/SourceCode/VietnameseSpecialtiesWebsite/admin/h.php",
+		"/C/Users/MyPC/Desktop/VietnameseSpecialtiesWebsite/SourceCode/VietnameseSpecialtiesWebsite/admin/index.php",
+		"/C/xampp/htdocs/laravel/app/Cart.php",
+		"/C/xampp/htdocs/laravel/app/Http/Controllers/PageController.php",
+		"/C/xampp/htdocs/laravel/app/Http/routes.php",
+		"/C/xampp/htdocs/laravel/app/Providers/AppServiceProvider.php",
+		"/C/xampp/htdocs/laravel/resources/views/header.blade.php",
+		"/C/xampp/htdocs/laravel/resources/views/page/trangchu.blade.php",
+		"/C/Users/MyPC/Desktop/Sublime Text Build 3200 x64/Data/Packages/User/runHTML.sublime-build",
+		"/C/Users/MyPC/Desktop/VietnameseSpecialtiesWebsite/SourceCode/VietnameseSpecialtiesWebsite/libraries/function.php",
+		"/C/Users/MyPC/Desktop/VietnameseSpecialtiesWebsite/SourceCode/VietnameseSpecialtiesWebsite/index.php",
+		"/C/Users/MyPC/Desktop/VietnameseSpecialtiesWebsite/SourceCode/VietnameseSpecialtiesWebsite/admin/modules/category/delete.php",
+		"/C/xampp/htdocs/ban_hang/index.php",
+		"/C/xampp/htdocs/ban_hang/ket_noi.php",
+		"/C/xampp/htdocs/laravel/public/source/index.html",
+		"/C/xampp/htdocs/laravel/resources/views/page/loai_sanpham.blade.php",
+		"/C/xampp/htdocs/laravel/resources/views/page/chitiet_sanpham.blade.php",
+		"/C/xampp/htdocs/dacsanMB/application/views/site/news/newest.php",
+		"/C/xampp/htdocs/laravel/app/ProductType.php",
+		"/C/xampp/htdocs/shop/.env",
+		"/C/xampp/htdocs/laravel/app/Slide.php",
+		"/C/xampp/htdocs/laravel/resources/views/page/lienhe.blade.php",
+		"/C/xampp/htdocs/laravel/resources/views/page/gioithieu.blade.php",
+		"/C/xampp/htdocs/laravel/public/source/about.html",
+		"/C/xampp/htdocs/laravel/resources/views/page/gioithieu.blade.hp",
+		"/C/xampp/htdocs/laravel/public/source/contacts.html",
+		"/C/xampp/htdocs/laravel/public/source/product_type.html",
+		"/C/xampp/htdocs/laravel/public/source/product.html",
+		"/C/xampp/htdocs/laravel/resources/views/footer.blade.php",
+		"/C/xampp/htdocs/laravel/resources/views/master.blade.php",
+		"/C/xampp/htdocs/dacsanMB/application/config/config.php",
+		"/C/xampp/htdocs/laravel/config/app.php",
+		"/C/xampp/htdocs/laravel/.env",
+		"/C/xampp/htdocs/laravel/app/Product.php",
+		"/C/xampp/htdocs/laravel/app/Bill.php",
+		"/C/xampp/htdocs/laravel/app/BillDetail.php",
+		"/C/xampp/htdocs/laravel/app/Customer.php",
+		"/C/xampp/htdocs/laravel/app/News.php",
+		"/C/xampp/htdocs/laravel/resources/views/page/footer.blade.php",
+		"/C/xampp/htdocs/laravel/resources/views/master.blale.php",
+		"/C/xampp/htdocs/dacsanMB/application/config/migration.php",
+		"/C/xampp/htdocs/OneDrive-2019-04-09/application/config/config.php",
+		"/C/xampp/htdocs/OneDrive-2019-04-09/application/controllers/Welcome.php",
+		"/C/xampp/htdocs/OneDrive-2019-04-09/application/views/admin/admin/edit.php",
+		"/C/xampp/htdocs/OneDrive-2019-04-09/application/views/admin/admin/add.php",
+		"/C/xampp/htdocs/OneDrive-2019-04-09/application/controllers/User.php",
+		"/C/xampp/htdocs/OneDrive-2019-04-09/application/controllers/Product.php",
+		"/C/xampp/htdocs/OneDrive-2019-04-09/application/controllers/Order.php",
+		"/C/xampp/htdocs/OneDrive-2019-04-09/application/controllers/News.php",
+		"/C/xampp/htdocs/OneDrive-2019-04-09/application/controllers/Home.php",
+		"/C/xampp/htdocs/OneDrive-2019-04-09/application/controllers/Email.php",
+		"/C/xampp/htdocs/OneDrive-2019-04-09/application/controllers/Contact.php",
+		"/C/xampp/htdocs/OneDrive-2019-04-09/application/views/site/user/edit.php",
+		"/C/xampp/htdocs/OneDrive-2019-04-09/application/controllers/Cart.php",
+		"/C/xampp/htdocs/OneDrive-2019-04-09/application/config/autoload.php",
+		"/C/xampp/htdocs/ban_hang/chuc_nang/dieu_huong.php",
+		"/C/xampp/htdocs/ban_hang/chuc_nang/footer/footer.php",
+		"/C/xampp/htdocs/ban_hang/quan_tri/chuc_nang/menu_doc/lien_ket_menu_doc.php",
+		"/C/xampp/htdocs/ban_hang/chuc_nang/banner/banner.php",
+		"/C/xampp/htdocs/ban_hang/debug.sublime-project",
+		"/C/xampp/htdocs/webproduct/application/config/config.php",
+		"/C/xampp/htdocs/webproduct/application/config/autoload.php",
+		"/C/xampp/htdocs/shopping_part_3/template/site/index.html",
+		"/C/xampp/htdocs/baitap1/CodeIgniter-3.1.10/application/controllers/Logiin.php",
+		"/C/xampp/htdocs/baitap1/CodeIgniter-3.1.10/application/controllers/Third_controler.php",
+		"/C/xampp/htdocs/baitap1/CodeIgniter-3.1.10/application/views/View_third.php",
+		"/C/xampp/htdocs/baitap1/CodeIgniter-3.1.10/application/views/login.php",
+		"/C/xampp/htdocs/bai1/bansim/application/controllers/Welcome.php",
+		"/C/xampp/htdocs/bai1/bansim/application/controllers/First_controller.php",
+		"/C/xampp/htdocs/baitap1/CodeIgniter-3.1.10/application/config/config.php",
+		"/C/xampp/htdocs/baitap1/CodeIgniter-3.1.10/application/config/autoload.php",
+		"/C/xampp/htdocs/bai1/bansim/application/config/autoload.php",
+		"/C/xampp/htdocs/baitap1/CodeIgniter-3.1.10/index.php",
+		"/C/xampp/htdocs/baitap1/CodeIgniter-3.1.10/application/views/welcome_message.php",
+		"/C/xampp/htdocs/bai1/bansim/application/controllers/Third_controler.php",
+		"/C/xampp/htdocs/baitap1/CodeIgniter-3.1.10/application/controllers/First_controller.php",
+		"/C/xampp/htdocs/bai1/bansim/application/controllers/AddData.php",
+		"/C/xampp/htdocs/baitap1/CodeIgniter-3.1.10/application/index.html",
+		"/C/xampp/htdocs/baitap1/CodeIgniter-3.1.10/application/controllers/Welcome.php",
+		"/C/xampp/htdocs/project1/uploads/news_image/dong-nguoi-do-ve-que-nghi-le-giao-thong-ha-noi-hon-loan (2).jpg",
+		"/C/xampp/htdocs/project1/uploads/background_news/259855723179588efa8.43198107.jpg",
+		"/C/xampp/htdocs/project1/uploads/background_news/274365741c310379b83.43625656.jpg",
+		"/C/xampp/htdocs/project/admin/admin.php",
+		"/C/xampp/htdocs/bai1/bansim/application/models/AddData_model.php",
+		"/C/xampp/htdocs/bai1/bansim/application/views/addData_view.php",
+		"/C/xampp/htdocs/bai1/bansim/application/config/database.php",
+		"/C/xampp/htdocs/bai1/bansim/application/config/config.php",
+		"/C/xampp/htdocs/bai1/bansim/1.html",
+		"/C/xampp/htdocs/index.php",
+		"/C/Users/MyPC/Desktop/Sublime Text Build 3200 x64/Data/Packages/View In Browser/View In Browser.sublime-settings",
+		"/C/Users/MyPC/Desktop/Sublime Text Build 3200 x64/Data/Packages/User/View In Browser.sublime-settings",
+		"/C/Users/MyPC/Desktop/Sublime Text Build 3200 x64/1.php",
+		"/C/xampp/htdocs/baitap",
+		"/C/Users/MyPC/Desktop/Sublime Text Build 3200 x64/1.html"
+	],
+	"find":
+	{
+		"height": 22.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"atabase",
+			"appends",
+			"new_product",
+			"assets",
+			"database",
+			"autoload",
+			"url"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 40.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.xdebug":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "debug.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"xdebug":
+		{
+			"hide_conflict": false,
+			"restore_index":
+			{
+			},
+			"restore_layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						1
+					]
+				],
+				"cols":
+				[
+					0.0,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					1.0
+				]
+			}
+		}
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 225.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

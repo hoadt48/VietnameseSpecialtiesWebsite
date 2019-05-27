@@ -6,7 +6,7 @@ $data = [
 ];
 $error = [];
 if (postInput('name') == '') {
-    $error['name'] = " Làm ơn nhập lại tên danh mục!";
+    $error['name'] = " Nhập lại tên danh mục!";
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = postInput("name");
@@ -46,7 +46,7 @@ if (empty($error['name'])) {
 
         <!-- Page Content -->
         <div class="card card-register mx-auto mt-5">
-            <div class="card-header">Thêm mới danh mục</div>
+            <div class="card-header">Thêm mới danh mục </div>
             <div class="card-body">
                 <form action="" method="POST">
                     <div class="form-group">
@@ -66,7 +66,7 @@ if (empty($error['name'])) {
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-primary btn-block" type="submit">Register</button>
+                    <button class="btn btn-primary btn-block" type="submit">Thêm</button>
                 </form>
             </div>
         </div>
