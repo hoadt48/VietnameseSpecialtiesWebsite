@@ -21,13 +21,27 @@ if (postInput('name') == '') {
 }
 
 if (empty($error)) {
-    $id_update = $db->update("category", $data,array('id'=>$id));
-    if ($id_update > 0) {
-        $_SESSION['success'] = editPageMessage['succes'];
-        redirectAdmin("category");
+    $isset = $db->fetchOne("category", " name = '" . $data['name'] . "'");
+    if ($EditCategory['name'] != $data['name']) {
+        if (count($isset) > 0) {
+            $_SESSION['error'] = editPageMessage['alive'];
+        } else {
+            $id_update = $db->update("category", $data, array('id' => $id));
+            if ($id_update > 0) {
+                $_SESSION['success'] = editPageMessage['succes'];
+                redirectAdmin("category");
+            } else {
+                $_SESSION['error'] = editPageMessage['error'];
+            }
+        }
     } else {
-        $_SESSION['error'] = editPageMessage['error'];
-        //redirectAdmin("category");
+        $id_update = $db->update("category", $data, array('id' => $id));
+        if ($id_update > 0) {
+            $_SESSION['success'] = editPageMessage['succes'];
+            redirectAdmin("category");
+        } else {
+            $_SESSION['error'] = editPageMessage['error'];
+        }
     }
 }
 ?>

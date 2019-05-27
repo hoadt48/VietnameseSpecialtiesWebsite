@@ -4,14 +4,16 @@
 define('addPageMessage', array(
     'succes' => ' Thêm mới thành công ',
     'error' => ' Thêm mới thất bại ',
-    'empty' => ' Dữ liệu không tồn tại '
+    'empty' => ' Dữ liệu không tồn tại ',
+    'alive' => ' Dữ liệu đã tồn tại '
 ));
 
 //edit page
 define('editPageMessage', array(
-    'succes' => ' Sửa thành công ',
-    'error' => ' Sửa thất bại ',
-    'empty' => ' Dữ liệu không tồn tại '
+    'succes' => ' Dữ liệu đã được thay đổi ',
+    'error' => ' Dữ liệu không thay đổi ',
+    'empty' => ' Dữ liệu không tồn tại ',
+    'alive' => ' Dữ liệu đã tồn tại '
 ));
 
 //delete page
