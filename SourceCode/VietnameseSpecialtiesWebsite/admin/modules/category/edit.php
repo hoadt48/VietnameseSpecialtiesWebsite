@@ -27,7 +27,7 @@ if (empty($error)) {
         redirectAdmin("category");
     } else {
         $_SESSION['error'] = editPageMessage['error'];
-        redirectAdmin("category");
+        //redirectAdmin("category");
     }
 }
 ?>
@@ -49,7 +49,10 @@ if (empty($error)) {
                 <i class="fa fa-file"></i> Sửa danh mục
             </li>
         </ol>
-
+        <!-- Breadcrumbs-->
+        <div class="clearfix">
+            <?php require_once __DIR__ . '\..\..\..\partials\notification.php'; ?>
+        </div>
         <!-- Page Content -->
         <div class="card card-register mx-auto mt-5">
             <div class="card-header">Sửa danh mục</div>
@@ -61,13 +64,11 @@ if (empty($error)) {
                                 <div class="form-label-group">
                                     <input type="text" id="categoryName" class="form-control" placeholder="Tên danh mục" autofocus="autofocus" name="name" value="<?php echo $EditCategory['name']?>">
                                     <label for="categoryName">Tên danh mục</label>
-<?php if (isset($error["name"])): ?>
+                                    <?php if (isset($error["name"])): ?>
                                         <p clase="text-danger">
-                                        <?php
-                                        echo $error["name"];
-                                        ?>
+                                            <?php echo $error["name"]; ?>
                                         </p>
-                                        <?php endif ?>
+                                    <?php endif ?>
                                 </div>
                             </div>
                         </div>
