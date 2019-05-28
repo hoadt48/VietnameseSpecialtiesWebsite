@@ -99,4 +99,9 @@
                 <i class="fas fa-fw fa-table"></i>
                 <span>Danh mục</span></a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo modules("product") ?>">
+                <i class="fas fa-fw fa-database"></i>
+                <span>Sản phẩm</span></a>
+        </li>
     </ul>

@@ -4,7 +4,7 @@
 define('addPageMessage', array(
     'succes' => ' Thêm mới thành công ',
     'error' => ' Thêm mới thất bại ',
-    'empty' => ' Dữ liệu không tồn tại ',
+    'empty' => ' Trường này đang bị bỏ trống ',
     'alive' => ' Dữ liệu đã tồn tại '
 ));
 
