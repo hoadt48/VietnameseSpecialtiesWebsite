@@ -74,7 +74,7 @@
             <!-- Sidebar -->
             <ul class="sidebar navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">
+                    <a class="nav-link" href="<?php echo base_url() ?>/admin">
                     <i class="fas fa-fw fa-tachometer-alt"></i> 
                     <span>Trang quản trị</span>
                     </a>
@@ -85,5 +85,12 @@
                 <i class="fas fa-fw fa-table"></i>
                 <span>Danh mục sản phẩm</span></a>
         </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo modules("product") ?>">
+                <i class="fas fa-comment-dollar"></i>
+                <span>Sản phẩm</span></a>
+        </li>
+
 
         </ul>

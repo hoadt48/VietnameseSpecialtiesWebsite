@@ -1,8 +1,27 @@
-<?php 
-   $open ='category';
+﻿<?php 
+   $open ='product';
  require_once __DIR__. '\..\..\autoload\autoload.php';
  
- $category = $db ->fetchAll('category');
+/* $product = $db ->fetchAll('product');*/
+
+
+if (isset($_GET['page'])) {
+ 
+    $p=$_GET['page'];
+}
+else {
+    $p=1;
+}
+
+$sql="select product.*, category.name as namecat from product left join category on category.id=product.category_id";
+$product=$db->fetchJone('product',$sql,$p,9,true);
+
+
+if(isset($product['page']))
+{
+    $sotrang=$product['page'];
+    unset($product['page']);
+}
 
 
 ?>
@@ -13,14 +32,14 @@
            <div id="content-wrapper">
                 <div class="container-fluid">
                     <!-- Breadcrumbs-->
-                <h1>Danh sách danh mục</h1>
+                <h1>Danh sách danh mục đặc sản theo các tỉnh</h1>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="index.html">Dashboard </a>
+                            <a href="<?php echo admin_page() ?>">Dashboard </a>
                         </li>
                         <li class="breadcrumb-item active"> Danh mục <a href="add.php"class="btn btn-success" >Thêm mới</a></li>
  </ol>
-<?php if (isset($_SESSION['success'])) : ?>
+   <?php if (isset($_SESSION['success'])) : ?>
         <!-- Breadcrumbs-->
         <div class="clearfix">
             <li class="alert alert-success">
@@ -31,13 +50,16 @@
         </div>
         <?php endif?>
  
- 
-<!--  <?php if (isset($_SESSION['error'])) : ?>
- <div class="clearfix">
-    <li class="alert alert-danger"> <?php echo $_SESSION['success'];   ?></li>
+ <!-- <div class="clearfix"> </div>  
+ <?php if (isset($_SESSION['error'])) : ?>
+      <li class="alert alert-success">
+                <?php echo $_SESSION['success'];
+                    //unset($_SESSION['success']);
+                ?>
+            </li>
      </div>
-<?php endif ?>
-           </div>   -->
+ <?php endif; ?> -->
+          
  <!--  -->
   
         
@@ -74,20 +96,26 @@
                         <thead>
                             <tr role="row">
                                 <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 80px;">STT</th>
-                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 300px;">Name</th>
-                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 200px;">Slug</th>
-                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 180px;">Created_at</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 200px;">Tên sản phẩm</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 100px;">Danh mục</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 180px;">Giá sản phẩm </th>
+                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 180px;">Số lượng </th>
+                                  <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 180px;">Đơn vị </th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 300px;">Nội dung </th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 120px;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $stt= 1; foreach ($category as $item): ?>
+                            <?php $stt= 1; foreach ($product as $item): ?>
                                 
                                 <tr role="row" class="odd">
                                 <td class="sorting_1"><?php echo $stt ?></td>
                                 <td><?php echo $item['name'] ?></td>
-                                <td><?php echo $item['slug'] ?></td>
-                                <td><?php echo $item['created_at'] ?></td>
+                                <td><?php echo $item['namecat'] ?></td>
+                                 <td><?php echo $item['price'] ?></td>
+                                 <td><?php echo $item['quantity'] ?></td>
+                                  <td><?php echo $item['unit'] ?></td>
+                                <td><?php echo $item['content'] ?></td>
                               <td><a href="edit.php?id=<?php echo $item['id'] ?>" class="btn btn-success">Sửa</a>
                              <a href="delete.php?id=<?php echo $item['id'] ?>"class="btn btn-success">Xóa</a></td>
                             </tr>
@@ -104,13 +132,12 @@
                 <div class="col-sm-12 col-md-7">
                     <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
                         <ul class="pagination">
-                            <li class="paginate_button page-item previous disabled" id="dataTable_previous"><a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                            <li class="paginate_button page-item active"><a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                            <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                            <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
-                            <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
-                            <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
-                            <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">6</a></li>
+                            <li class="paginate_button page-item previous disabled" id="dataTable_previous"><a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li                           <li class="paginate_button page-item active"><a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                           <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                           <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
+                           <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
+                           <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
+                           <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">6</a></li>
                             <li class="paginate_button page-item next" id="dataTable_next"><a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
                         </ul>
                     </div>

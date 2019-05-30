@@ -1,6 +1,6 @@
 <?php 
 
-    $open='category';
+    $open ='category';
 
     require_once __DIR__. '/../../autoload/autoload.php';
 
@@ -16,7 +16,7 @@
          {
             $error['name']=" Vui lòng nhập lại tên danh mục";
          }
-         //nếu loi trong insert dư  lieu vao
+         //nếu loi trong có nghĩa là không có lỗi  insert dư  lieu vao
          if(empty($error)){
             $id_insert = $db->insert('category', $data);
             //nếu có dữ liệu thông báo thành công nếu k thì trả về thông báo thất bại!
@@ -46,13 +46,14 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="index.html">Dashboard</a>
+                <a href="<?php echo admin_page()?>">Dashboard</a>
             </li>
             <li class="breadcrumb-item">
-                <a href="index.html">Danh mục</a>
+                <a href="<?php echo modules("category") ?>">Danh mục</a>
             </li>
             <li class="breadcrumb-item active">Thêm mới</li>
-        </ol>
+
+          </ol>
         <div class="row">
             <div class="col-md-5">
                 <form role="form" class="form-horizontal" method="POST">

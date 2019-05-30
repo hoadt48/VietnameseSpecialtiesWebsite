@@ -14,6 +14,9 @@
         redirectAdmin('category');
     }
 
+
+   $category=$db->fetchAll("category");
+
         if($_SERVER["REQUEST_METHOD"] == "POST")
     { 
             $data=
