@@ -80,6 +80,15 @@
                     </a>
                </li>
 
+                 </li>
+
+             <li class="nav-item">
+            <a class="nav-link" href="<?php echo modules("admin") ?>">
+                <i class="far fa-address-card"></i>
+                <span>Admin</span></a>
+        </li>
+
+
                <li class="nav-item">
             <a class="nav-link" href="<?php echo modules("category") ?>">
                 <i class="fas fa-fw fa-table"></i>
@@ -90,7 +99,12 @@
             <a class="nav-link" href="<?php echo modules("product") ?>">
                 <i class="fas fa-comment-dollar"></i>
                 <span>Sản phẩm</span></a>
-        </li>
-
-
+               </li>
+      
+               <li class="nav-item">
+            <a class="nav-link" href="<?php echo modules("posts") ?>">
+                <i class="fas fa-book"></i></i>
+                <span>Bài viết</span></a>
+               </li>
+        
         </ul>

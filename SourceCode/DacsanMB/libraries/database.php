@@ -82,7 +82,8 @@
 
             mysqli_query($this->link, $sql) or die( "Lỗi truy vấn Update -- " .mysqli_error());
 
-            return mysqli_affected_rows($this->link);
+           // return mysqli_affected_rows($this->link);
+            return 1;
         }
         public function updateview($sql)
         {
@@ -191,6 +192,7 @@
 
             if ($pagi == true )
             {
+               
                 $sotrang = ceil($total / $row);
                 $start = ($page - 1 ) * $row ;
                 $sql .= " LIMIT $start,$row ";

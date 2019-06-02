@@ -9,6 +9,7 @@
             $data=
             [
                 'name'=> postInput('name')
+                
               
             ];
          $error=[];
@@ -16,6 +17,7 @@
          {
             $error['name']=" Vui lòng nhập lại tên danh mục";
          }
+        
          //nếu loi trong có nghĩa là không có lỗi  insert dư  lieu vao
          if(empty($error)){
             $id_insert = $db->insert('category', $data);

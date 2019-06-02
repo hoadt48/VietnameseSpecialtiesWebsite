@@ -1,37 +1,29 @@
 <?php 
 
-    $open ='product';
+    $open ='posts';
 
     require_once __DIR__. '/../../autoload/autoload.php';
     $id=intval(getInput('id'));
 
 
 
-    $EditProduct=$db->fetchID('product',$id);
-    if(empty($EditProduct))
+    $DeletePosts=$db->fetchID('posts',$id);
+    if(empty($DeletePosts))
     {
         $_SESSION['error']='Dữ liệu không tồn tại';
-        redirectAdmin('product');
+        redirectAdmin('posts');
     }
 
-    // kiểm tra danh mục có sản phẩm chưa? nếu có thì không được xóa/
-
-
-
-
-
-
-
-    $num= $db->delete('product',$id);
+    $num= $db->delete('posts',$id);
         if($num>0)
         {
             $_SESSION['success']="Xóa thành công";
-            redirectAdmin('product');
+            redirectAdmin('posts');
         }
         else
         {
             $_SESSION['error']="Xóa dữ liệu thất bại";
-             redirectAdmin('product');
+             redirectAdmin('posts');
         }
    
 //}

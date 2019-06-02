@@ -32,10 +32,10 @@
             }
     
        }
-       _debug( $is_product); die();
+
     else {
 
-     $_SESSION['error']="Sản phẩm còn! Bạn không thể xóa danh mục";
+     $_SESSION['error'] = "Sản phẩm còn! Bạn không thể xóa danh mục";
                  redirectAdmin('category');
     }
 

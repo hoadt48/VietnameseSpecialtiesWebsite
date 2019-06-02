@@ -6,7 +6,6 @@
     $id=intval(getInput('id'));
 
 
-
     $EditProduct=$db->fetchID('product',$id);
     if(empty($EditProduct))
     {
@@ -24,7 +23,7 @@
                 'name'=> postInput('name'),        
                 'price'=> postInput('price'),
                 'quantity'=> postInput('quantity'),
-                'unit'=> postInput('unit'),  
+                'thunbar'=> $EditProduct['thunbar'],  
                 'content'=> postInput('content'),
               
             ];
@@ -48,22 +47,47 @@
          {
             $error['quantity']=" Vui lòng nhập lại số lượng sản phẩm ";
          }
-            if(postInput('unit')=='')
-         {
-            $error['unit']=" Vui lòng nhập lại đơn vị sản phẩm ";
-         }
-
+       
            if(postInput('content')=='')
          {
             $error['content']=" Vui lòng nhập lại nội dung sản phẩm";
-         }
+          }
+
+         // _debug($data);die();
 
          //nếu loi trong insert dư  lieu vao
          if(empty($error)){
+          $isChangeThunbar;
+          //lấy tên file bao gồm 
+           if(isset($_FILES['thunbar'])&&$_FILES['thunbar']['name']!=''){
+                $file_name=$_FILES['thunbar']['name'];
+                $fileTransfomation['fileName']=$file_name;
+                $fileTransfomation['from']=$_FILES['thunbar']['tmp_name'];//đường dẫn đến file upload ở client;
+                $file_type=$_FILES['thunbar']['type'];// kiểu file mà bạn upload(hình ảnh, word..)
+                $file_error=$_FILES['thunbar']['error'];// trang thái của file upload, 0 => không có lỗi
+                if($file_error==0)
+                {
+                  $fileTransfomation['to'] = ROOT.'product/';
+                  $data['thunbar']=$file_name;
+
+                }
+                $isChangeThunbar=true;
+              }
+              else {
+                {
+                  $isChangeThunbar=false;
+                }
+              }
             $id_update = $db->update('product', $data,array('id'=>$id));
+           //_debug($id_update);die();
+            
             //nếu có dữ liệu thông báo thành công nếu k thì trả về thông báo thất bại!
            if($id_update > 0)
            {
+                 if($isChangeThunbar==true&&$id_update>0)
+                  {
+                    move_uploaded_file($fileTransfomation['from'],$fileTransfomation['to'].$file_name);
+                  }
                  $_SESSION['success']="Sửa thành công";
                  redirectAdmin('product');
            }
@@ -141,8 +165,9 @@
       <?php endif ?>                      
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1"><h6>Đơn vị</h6></label>
-    <input type="text" class="form-control col-md-15" id="exampleInputPassword1" placeholder="gói" name="unit" value="<?php echo $EditProduct['unit'] ; ?>">   
+    <label for="exampleInputPassword1"><h6>Hình ảnh</h6></label>
+    <input type="file" class="form-control col-md-15" id="thunbar" onchange="clearOldThunbar()" placeholder="hình ảnh" name="thunbar">  
+    <span id="oldThunbar"><?php echo $EditProduct['thunbar']; ?></span>
     <?php if (isset($error["unit"])): ?>
       <p clase="text-danger"> <?php echo $error["unit"]; ?> </p>
       <?php endif ?>                     
@@ -150,7 +175,7 @@
 
  <div class="form-group">
     <label for="exampleInputEmail1"><h6>Nội dung </h6></label>
-     <textarea type="text" name="content" class="form-control " cols="exampleInputEmail1"" rows="4" placeholder="nội dung" name="content" ><?php echo $EditProduct['content'] ; ?></textarea>
+     <textarea type="text" name="content" class="form-control " cols="exampleInputEmail1" rows="4" placeholder="nội dung" name="content" ><?php echo $EditProduct['content'] ; ?></textarea>
      <?php if (isset($error["content"])): ?>
     <p clase="text-danger"> <?php echo $error["content"]; ?> </p>
     <?php endif ?>     
@@ -177,4 +202,10 @@
 <!-- /.content-wrapper -->
 </div>
 <!-- /#wrapper -->
+<script type="text/javascript">
+  function clearOldThunbar(){
+    var oldThunbar=document.getElementById('oldThunbar');
+    oldThunbar.value='';
+  }
+</script>
 <?php require_once __DIR__. '/../../layouts/footer.php';?>
