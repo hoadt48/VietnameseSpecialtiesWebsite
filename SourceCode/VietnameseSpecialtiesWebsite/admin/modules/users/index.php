@@ -1,9 +1,7 @@
 <?php
 require_once __DIR__ . '\..\..\autoload\autoload.php';
-$open = "product";
-$product = $db->fetchAll("product");
-$open = "category";
-$category = $db->fetchAll("category");
+$open = "users";
+$users = $db->fetchAll("users");
 ?>
 
 <?php require_once __DIR__ . '\..\..\layouts\header.php'; ?>
@@ -15,7 +13,7 @@ $category = $db->fetchAll("category");
             <li class="breadcrumb-item">
                 <a href="<?php echo admin_page() ?>">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Sản phẩm </li>
+            <li class="breadcrumb-item active">Users </li>
             <li class="breadcrumb-item active">
             </li>
             <li class="btn btn-success">
@@ -30,7 +28,7 @@ $category = $db->fetchAll("category");
         <div class="card mb-3">
             <div class="card-header">
                 <i class="fas fa-table"></i>
-                Sản phẩm</div>
+                Users</div>
             <div class="card-body">
                 <div class="table-responsive">
                     <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" role="grid" aria-describedby="dataTable_info" style="width: 100%;" width="100%" cellspacing="0">
@@ -38,37 +36,31 @@ $category = $db->fetchAll("category");
                                         <tr role="row">
                                             <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 5px;" >STT</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 100px;" >Name</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 100px;" >Category</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 100px;" >Slug</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 100px;" >Infor</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 100px;" >Thumbar</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 55px;" >Created_at</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 114px;" >Action</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 100px;" >Password</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 100px;" >ConfirmPassword</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 100px;" >Address</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 55px;" >Email</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 114px;" >Phone</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 114px;" >Avatar</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 114px;" >Level</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php 
                                             $stt = 1;
-                                            foreach ($product as $item): ?>
+                                            foreach ($admin as $item): ?>
                                                 <tr role="row" class="even">
                                                     <td class="sorting_1"><?php echo $stt?></td>
                                                     <td><?php echo $item['name']?></td>
-                                                    <td><?php 
-                                                    $Categoryproduct = $db->fetchID('category', $item['category_id']);
-                                                    echo $Categoryproduct['name']
-                                                    ?></td>
-                                                    <td><?php echo $item['slug']?></td>
+                                                    <td><?php echo $item['password']?></td>
+                                                    <td><?php echo $item['password']?></td>
+                                                    <td><?php echo $item['address']?></td>
+                                                    <td><?php echo $item['email']?></td>
+                                                    <td><?php echo $item['phone']?></td>
                                                     <td>
-                                                        <ul>
-                                                            <li>Giá : <?php echo $item['price']?></li>
-                                                            <li>Số lượng: <?php echo $item['number']?></li>
-                                                        </ul>
-                                                        
+                                                        <img src="<?php echo uploads()?>admin/<?php echo $item['avatar']?>" width="80px" height="80px">
                                                     </td>
-                                                    <td>
-                                                        <img src="<?php echo uploads()?>product/<?php echo $item['thunbar']?>" width="80px" height="80px">
-                                                    </td>
-                                                    <td><?php echo $item['created_at']?></td>
+                                                    <td><?php echo $item['level']?></td>
                                                     <td>
                                                         <a class="btn btn-info" href="edit.php?id=<?php echo $item['id']?>"><i class="fa fa-edit"> </i> Sửa</a>
                                                         <a class="btn btn-danger" href="delete.php?id=<?php echo $item['id']?>"><i class="fa fa-times"> </i> Xoá</a>

@@ -6,24 +6,23 @@ $data = [
     "slug" => to_slug(postInput("name"))
 ];
 $error = [];
-if (postInput('name') == '') {
-    $error['name'] = addPageMessage['empty'];
-}
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = postInput("name");
-}
 
-if (empty($error['name'])) {
-    $isset = $db->fetchOne("category", " name = '" . $data['name'] . "'");
-    if (count($isset) > 0) {
-        $_SESSION['error'] = addPageMessage['alive'];
-    } else {
-        $id_insert = $db->insert("category", $data);
-        if ($id_insert > 0) {
-            $_SESSION['success'] = addPageMessage['succes'];
-            redirectAdmin("category");
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (postInput('name') == '') {
+        $error['name'] = addPageMessage['empty'];
+    }
+    if (empty($error['name'])) {
+        $isset = $db->fetchOne("category", " name = '" . $data['name'] . "'");
+        if (count($isset) > 0) {
+            $_SESSION['error'] = addPageMessage['alive'];
         } else {
-            $_SESSION['error'] = addPageMessage['error'];
+            $id_insert = $db->insert("category", $data);
+            if ($id_insert > 0) {
+                $_SESSION['success'] = addPageMessage['succes'];
+                redirectAdmin("category");
+            } else {
+                $_SESSION['error'] = addPageMessage['error'];
+            }
         }
     }
 }

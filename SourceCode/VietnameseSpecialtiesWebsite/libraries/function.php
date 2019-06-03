@@ -98,7 +98,7 @@ function modules($url) {
 }
 
 function uploads() {
-    return base_url() . "public/uploads/";
+    return base_url() . "public/upload/";
 }
 
 if (!function_exists('redirectStyle')) {

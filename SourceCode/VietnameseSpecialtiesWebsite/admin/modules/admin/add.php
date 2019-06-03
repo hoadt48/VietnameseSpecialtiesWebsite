@@ -1,71 +1,66 @@
 <?php
 require_once __DIR__ . '\..\..\autoload\autoload.php';
-$open = "product";
 $open = "category";
 $category = $db->fetchAll("category");
-$id = intval(getInput('id'));
-$Editproduct = $db->fetchID('product', $id);
-if (empty($Editproduct)) {
-    $_SESSION['error'] = editPageMessage['empty'];
-    redirectAdmin("product");
-}
+$open = "admin";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $data = [
         "name" => postInput('name'),
-        "slug" => to_slug(postInput("name")),
-        "category_id" => postInput("category_id"),
+        "password" => to_password(postInput("name")),
         "price" => postInput("price"),
         "content" => postInput("content"),
-        "thunbar" => postInput("thunbar"),
+        "avatar" => postInput("avatar"),
         "number" => postInput("number"),
         "sale" => postInput("sale")
     ];
     $error = [];
     if (postInput('name') == '') {
-        $error['name'] = editPageMessage['empty'];
+        $error['name'] = addPageMessage['empty'];
     }
     if (postInput('category_id') == '') {
-        $data['category_id'] = $Editproduct['category_id'];
+        $error['category'] = addPageMessage['empty'];
     }
     if (postInput('price') == '') {
-        $error['price'] = editPageMessage['empty'];
+        $error['price'] = addPageMessage['empty'];
     }
     if (postInput('sale') == '') {
-        $error['sale'] = editPageMessage['empty'];
+        $error['sale'] = addPageMessage['empty'];
     }
     if (postInput('content') == '') {
-        $error['content'] = editPageMessage['empty'];
-    }
-    if (postInput('number') == '') {
-        $error['number'] = editPageMessage['empty'];
+        $error['content'] = addPageMessage['empty'];
     }
 
-    if (empty($error['name'])) {
-        if (isset($_FILES['thunbar']) && $_FILES['thunbar']['name'] != NULL) {
-            $file_name = $_FILES['thunbar']['name'];
-            $file_tmp = $_FILES['thunbar']['tmp_name'];
-            $file_type = $_FILES['thunbar']['type'];
-            $file_erro = $_FILES['thunbar']['error'];
+    if (postInput('number') == '') {
+        $error['number'] = addPageMessage['empty'];
+    }
+
+    if (!isset($_FILES['avatar'])) {
+        $error['avatar'] = addPageMessage['empty'];
+    }
+
+    if (empty($error)) {
+        if (isset($_FILES['avatar'])) {
+            $file_name = $_FILES['avatar']['name'];
+            $file_tmp = $_FILES['avatar']['tmp_name'];
+            $file_type = $_FILES['avatar']['type'];
+            $file_erro = $_FILES['avatar']['error'];
 
             if ($file_erro == 0) {
-                $uploads_dir = ROOT . "public/upload/product/";
-                $data['thunbar'] = $file_name;
+                $uploads_dir = ROOT . "public/upload/admin/";
+                $data['avatar'] = $file_name;
             }
+        }
+        $id_insert = $db->insert("admin", $data);
+        if ($id_insert) {
             move_uploaded_file($file_tmp, $uploads_dir . $file_name);
-        }
-        else {
-            $data['thunbar'] = $Editproduct['thunbar'];
-        }
-        _debug($data);
-        $id_update = $db->update("product", $data, array('id' => $id));
-        if ($id_update) {
-            $_SESSION['success'] = editPageMessage['succes'];
-            redirectAdmin("product");
+            $_SESSION['success'] = addPageMessage['succes'];
+            redirectAdmin("admin");
         } else {
-            $_SESSION['error'] = editPageMessage['error'];
+            $_SESSION['error'] = addPageMessage['error'];
         }
     }
 }
+
 ?>
 
 <?php require_once __DIR__ . '\..\..\layouts\header.php'; ?>
@@ -79,10 +74,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <a href="<?php echo admin_page() ?>">Dashboard</a>
             </li>
             <li class="breadcrumb-item">
-                <a href="<?php echo modules("product") ?>">Sản phẩm</a>
+                <a href="<?php echo modules("admin") ?>">Admin</a>
             </li>
             <li class="breadcrumb-item active">
-                <i class="fa fa-file"></i> Sửa Sản phẩm
+                <i class="fa fa-file"></i> Thêm mới
             </li>
         </ol>
         <!-- Breadcrumbs-->
@@ -91,14 +86,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <!-- Page Content -->
         <div class="card card-register mx-auto mt-5">
-            <div class="card-header">Sửa Sản phẩm</div>
-            <form action="" method="POST" enctype="multipart/form-data">
+            <div class="card-header">Thêm mới Admin</div>
+            <div class="card-body">
+                <form action="" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col-md-12">
                                 <div class="form-label-group">
-                                    <input type="text" id="productName" class="form-control" placeholder="Tên Sản phẩm" autofocus="autofocus" name="name" value="<?php echo $Editproduct['name']?>">
-                                    <label for="productName">Tên Sản phẩm</label>
+                                    <input type="text" id="adminName" class="form-control" placeholder="Tên Admin" autofocus="autofocus" name="name">
+                                    <label for="adminName">Tên Admin</label>
                                     <?php if (isset($error["name"])): ?>
                                         <p clase="text-danger">
                                             <?php echo $error["name"]; ?>
@@ -112,28 +108,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="form-row">
                             <div class="col-md-12">
                                 <div class="form-label-group">
-                                    <select type="text" id="category_id" class="form-control" placeholder="Tên Danh Mục" name="category_id">
-                                        <option value=""> <?php $Categoryproduct = $db->fetchID('category', $Editproduct['category_id']);
-                                                    echo $Categoryproduct['name']?> </option>
-                                        <?php foreach ($category as $item) : ?>
-                                        <option value="<?php echo $item['id'] ?>"> <?php echo $item['name'] ?></option>
-                                        <?php endforeach ?>
-                                    </select>
-                                    <?php if (isset($error["category_id"])): ?>
-                                        <p clase="text-danger">
-                                            <?php echo $error["category_id"]; ?>
-                                        </p>
-                                    <?php endif ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-row">
-                            <div class="col-md-12">
-                                <div class="form-label-group">
-                                    <input type="text" id="priceName" class="form-control" placeholder="9000000" name="price" value="<?php echo $Editproduct['price']?>">
-                                    <label for="priceName">Giá Sản phẩm</label>
+                                    <input type="text" id="priceName" class="form-control" placeholder="9000000" name="price">
+                                    <label for="priceName">Giá Admin</label>
                                     <?php if (isset($error["price"])): ?>
                                         <p clase="text-danger">
                                             <?php echo $error["price"]; ?>
@@ -147,8 +123,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="form-row">
                             <div class="col-md-12">
                                 <div class="form-label-group">
-                                    <input type="text" id="numberName" class="form-control" placeholder="9000000" name="number" value="<?php echo $Editproduct['number']?>">
-                                    <label for="numberName">Số Lượng Sản phẩm</label>
+                                    <input type="text" id="numberName" class="form-control" placeholder="9000000" name="number">
+                                    <label for="numberName">Số Lượng Admin</label>
                                     <?php if (isset($error["number"])): ?>
                                         <p clase="text-danger">
                                             <?php echo $error["number"]; ?>
@@ -162,19 +138,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="form-label-group">
-                                    <input type="text" id="saleName" class="form-control" placeholder="10%" name="sale" value="<?php echo $Editproduct['sale']?>">
-                                    <label for="saleName">Giảm Giá Sản phẩm</label>
+                                    <input type="text" id="saleName" class="form-control" placeholder="10%" name="sale" value="0">
+                                    <label for="saleName">Giảm Giá Admin</label>
                                 </div>
                             </div>
                             
                             <div class="col-md-6">
                                 <div class="form-label-group">
-                                    <input type="file" id="thunbar" class="form-control" name="thunbar" value="<?php echo $Editproduct['thunbar']?>">
-                                    <label for="fileName">Hình Ảnh Sản phẩm</label>
-                                    <img src="<?php echo uploads()?>product/<?php echo $Editproduct['thunbar']?>" width="40px" height="40px">
-                                    <?php if (isset($error["thunbar"])): ?>
+                                    <input type="file" id="avatar" class="form-control" name="avatar">
+                                    <label for="fileName">Hình Ảnh Admin</label>
+                                    <?php if (isset($error["avatar"])): ?>
                                         <p clase="text-danger">
-                                            <?php echo $error["thunbar"]; ?>
+                                            <?php echo $error["avatar"]; ?>
                                         </p>
                                     <?php endif ?>
                                 </div> 
@@ -185,13 +160,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="form-row">
                             <div class="col-md-12">
                                 <div class="form-label-group">
-                                    <textarea placeholder="Thông tin sản phẩm" name="content" rows="4" type="text" class="form-control"><?php echo $Editproduct['content']?></textarea>
+                                    <textarea placeholder="Thông tin Admin" name="content" rows="4" type="text" class="form-control"></textarea>
+                                    <?php if (isset($error["price"])): ?>
+                                        <p clase="text-danger">
+                                            <?php echo $error["price"]; ?>
+                                        </p>
+                                    <?php endif ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <button class="btn btn-primary btn-block" type="submit">Xác nhận</button>
                 </form>
+            </div>
         </div>
     </div>
     <!-- /.container-fluid -->

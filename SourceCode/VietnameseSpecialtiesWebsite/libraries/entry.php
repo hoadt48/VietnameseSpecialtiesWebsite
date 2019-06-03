@@ -4,7 +4,7 @@
 define('addPageMessage', array(
     'succes' => ' Thêm mới thành công ',
     'error' => ' Thêm mới thất bại ',
-    'empty' => ' Trường này đang bị bỏ trống ',
+    'empty' => ' Dữ liệu không tồn tại ',
     'alive' => ' Dữ liệu đã tồn tại '
 ));
 
@@ -20,6 +20,7 @@ define('editPageMessage', array(
 define('deletePageMessage', array(
     'succes' => ' Xoá thành công ',
     'error' => ' Xoá thất bại ',
-    'empty' => ' Dữ liệu không tồn tại '
+    'empty' => ' Dữ liệu không tồn tại ',
+    'related' => ' Dữ liệu không thể xoá vì đã được liên kết '
 ));
 ?>

@@ -7,12 +7,18 @@ if (empty($DeleteCategory)) {
     $_SESSION['error'] = deletePageMessage['empty'];
     redirectAdmin("category");
 }
-$num = $db->delete("category", $id);
-if ($num > 0) {
-    $_SESSION['success'] = deletePageMessage['succes'];
-    redirectAdmin("category");
+$is_product = $db->fetchOne("product"," category_id = $id ");
+if ($is_product == NULL) {
+    $num = $db->delete("category", $id);
+    if ($num > 0) {
+        $_SESSION['success'] = deletePageMessage['succes'];
+        redirectAdmin("category");
+    } else {
+        $_SESSION['error'] = deletePageMessage['error'];
+        redirectAdmin("category");
+    }
 } else {
-    $_SESSION['error'] = deletePageMessage['error'];
+    $_SESSION['error'] = deletePageMessage['related'];
     redirectAdmin("category");
 }
 ?>

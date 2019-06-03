@@ -104,4 +104,14 @@
                 <i class="fas fa-fw fa-database"></i>
                 <span>Sản phẩm</span></a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo modules("admin") ?>">
+                <i class="fas fa-fw fa-user-circle"></i>
+                <span>Admin</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo modules("users") ?>">
+                <i class="fas fa-fw fa-user-circle"></i>
+                <span>Users</span></a>
+        </li>
     </ul>

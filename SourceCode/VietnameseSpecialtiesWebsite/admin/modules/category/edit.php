@@ -76,13 +76,8 @@ if (empty($error)) {
                         <div class="form-row">
                             <div class="col-md-12">
                                 <div class="form-label-group">
-                                    <input type="text" id="categoryName" class="form-control" placeholder="Tên danh mục" autofocus="autofocus" name="name" value="<?php echo $EditCategory['name']?>">
+                                    <input type="text" id="categoryName" class="form-control" placeholder="Tên danh mục" autofocus="autofocus" name="name" required="true" value="<?php echo $EditCategory['name']?>">
                                     <label for="categoryName">Tên danh mục</label>
-                                    <?php if (isset($error["name"])): ?>
-                                        <p clase="text-danger">
-                                            <?php echo $error["name"]; ?>
-                                        </p>
-                                    <?php endif ?>
                                 </div>
                             </div>
                         </div>
