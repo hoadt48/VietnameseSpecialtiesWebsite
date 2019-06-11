@@ -23,12 +23,12 @@ foreach ($CategoryHome as $item) {
                                 <div class="showitem">
                                     <?php foreach ($value as $item) :?>
                                         <div class="col-md-3 item-product bor">
-                                            <a href="">
+                                            <a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ?>">
                                                 <img src="<?php echo uploads()?>product/<?php echo $item['thunbar']?>" class="" width="100%" height="180">
                                             </a>
                                             <div class="info-item">
-                                                <a href=""><?php echo $item['name'] ?></a>
-                                                <p><strike class="sale"><?php echo $item['sale'] ?></strike> <b class="price"><?php echo $item['price'] ?></b></p>
+                                                <a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ?>"><?php echo $item['name'] ?></a>
+                                                <p><strike class="sale"><?php echo formatPriceSale($item['price'], $item['sale']) ?></strike> <b class="price"><?php echo formatPrice($item['price']) ?></b></p>
                                             </div>
                                             <div class="hidenitem">
                                                 <p><a href=""><i class="fa fa-search"></i></a></p>

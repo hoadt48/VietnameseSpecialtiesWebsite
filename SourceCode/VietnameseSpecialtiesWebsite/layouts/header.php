@@ -149,7 +149,7 @@
                             <ul>
                                 <?php foreach ($productNew as $item) : ?>
                                     <li class="clearfix">
-                                        <a href="san-pham.php?id=<?php echo $item['id'] ?>">
+                                        <a href="danh-muc-san-pham.php?id=<?php echo $item['id'] ?>">
                                             <img src="<?php echo base_url() ?>public/upload/product/<?php echo $item['thunbar'] ?>" class="img-responsive pull-left" width="80" height="80">
                                             <div class="info pull-right">
                                                 <p class="name"> <?php echo $item['name'] ?></p >

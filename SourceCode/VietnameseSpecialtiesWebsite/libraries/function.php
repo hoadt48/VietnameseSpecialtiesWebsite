@@ -101,6 +101,18 @@ function uploads() {
     return base_url() . "public/upload/";
 }
 
+function formatPrice($number) {
+    $number = intval($number);
+    return number = number_format($number, 0, ',', '.') . "VND";
+}
+
+function formatPriceSale($number, $sale) {
+    $number = intval($number);
+    $sale = intval($sale);
+    $price = $number*(100 - $sale)/100;
+    return formatPrice($price);
+}
+
 if (!function_exists('redirectStyle')) {
 
     function redirectStyle($url = "") {
