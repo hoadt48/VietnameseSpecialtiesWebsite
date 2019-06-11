@@ -33,7 +33,14 @@ $category = $db->fetchAll("category");
                 <div class="table-responsive">
                     <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" role="grid" aria-describedby="dataTable_info" style="width: 100%;" width="100%" cellspacing="0">
                                     <thead>
-                                        <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 5px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">STT</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 254px;" aria-label="Position: activate to sort column ascending">Name</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 118px;" aria-label="Office: activate to sort column ascending">Slug</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 55px;" aria-label="Age: activate to sort column ascending">Created_at</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 114px;" aria-label="Start date: activate to sort column ascending">Action</th></tr>
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 5px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">STT</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 254px;" aria-label="Position: activate to sort column ascending">Name</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 118px;" aria-label="Office: activate to sort column ascending">Slug</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 55px;" aria-label="Age: activate to sort column ascending">Created_at</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 55px;" aria-label="Age: activate to sort column ascending">Home</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 114px;" aria-label="Start date: activate to sort column ascending">Action</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                         <?php 
@@ -43,6 +50,11 @@ $category = $db->fetchAll("category");
                                                     <td class="sorting_1"><?php echo $stt?></td>
                                                     <td><?php echo $item['name']?></td>
                                                     <td><?php echo $item['slug']?></td>
+                                                    <td>
+                                                        <a class="btn btn-xs <?php echo $item['home'] == 1 ? 'btn-info' : 'btn-danger'?>" href="home.php?id=<?php echo $item['id']?>"><i class="fa fa-archive"> </i> 
+                                                            <?php echo $item['home'] == 1 ? 'Hiển thị' : 'Ẩn'?>
+                                                        </a>
+                                                    </td>
                                                     <td><?php echo $item['created_at']?></td>
                                                     <td>
                                                         <a class="btn btn-info" href="edit.php?id=<?php echo $item['id']?>"><i class="fa fa-edit"> </i> Sửa</a>

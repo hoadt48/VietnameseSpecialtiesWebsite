@@ -1,58 +1,43 @@
 <?php
 require_once __DIR__ . '\..\..\autoload\autoload.php';
-$open = "category";
-$category = $db->fetchAll("category");
 $open = "admin";
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $data = [
+$data = [
         "name" => postInput('name'),
-        "password" => to_password(postInput("name")),
-        "price" => postInput("price"),
-        "content" => postInput("content"),
-        "avatar" => postInput("avatar"),
-        "number" => postInput("number"),
-        "sale" => postInput("sale")
+        "email" => postInput("email"),
+        "phone" => postInput("phone"),
+        "password" => MD5("password"),
+        "level" => postInput("level")
     ];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $error = [];
     if (postInput('name') == '') {
         $error['name'] = addPageMessage['empty'];
     }
-    if (postInput('category_id') == '') {
-        $error['category'] = addPageMessage['empty'];
+    if (postInput('email') == '') {
+        $error['email'] = addPageMessage['empty'];
     }
-    if (postInput('price') == '') {
-        $error['price'] = addPageMessage['empty'];
-    }
-    if (postInput('sale') == '') {
-        $error['sale'] = addPageMessage['empty'];
-    }
-    if (postInput('content') == '') {
-        $error['content'] = addPageMessage['empty'];
-    }
-
-    if (postInput('number') == '') {
-        $error['number'] = addPageMessage['empty'];
-    }
-
-    if (!isset($_FILES['avatar'])) {
-        $error['avatar'] = addPageMessage['empty'];
-    }
-
-    if (empty($error)) {
-        if (isset($_FILES['avatar'])) {
-            $file_name = $_FILES['avatar']['name'];
-            $file_tmp = $_FILES['avatar']['tmp_name'];
-            $file_type = $_FILES['avatar']['type'];
-            $file_erro = $_FILES['avatar']['error'];
-
-            if ($file_erro == 0) {
-                $uploads_dir = ROOT . "public/upload/admin/";
-                $data['avatar'] = $file_name;
-            }
+ else {
+        $is_check = $db->fetchOne("admin"," email = '".$data['email']."' ");
+        if ($is_check != NULL)
+        {
+            $error['email'] = addPageMessage['alive'];
         }
+    }
+    if (postInput('password') == '') {
+        $error['password'] = addPageMessage['empty'];
+    }
+    if (postInput('confirmpassword') == '') {
+        $error['confirmpassword'] = addPageMessage['empty'];
+    }
+    if (postInput('password') != postInput('confirmpassword')) {
+        $error['confirmpassword'] = addPageMessage['confirm_error'];
+    }
+    if (postInput('phone') == '') {
+        $error['phone'] = addPageMessage['empty'];
+    }
+    if (empty($error)) {
         $id_insert = $db->insert("admin", $data);
         if ($id_insert) {
-            move_uploaded_file($file_tmp, $uploads_dir . $file_name);
             $_SESSION['success'] = addPageMessage['succes'];
             redirectAdmin("admin");
         } else {
@@ -108,11 +93,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="form-row">
                             <div class="col-md-12">
                                 <div class="form-label-group">
-                                    <input type="text" id="priceName" class="form-control" placeholder="9000000" name="price">
-                                    <label for="priceName">Giá Admin</label>
-                                    <?php if (isset($error["price"])): ?>
+                                    <input type="text" id="emailName" class="form-control" placeholder="9000000" name="email">
+                                    <label for="emailName">Email</label>
+                                    <?php if (isset($error["email"])): ?>
                                         <p clase="text-danger">
-                                            <?php echo $error["price"]; ?>
+                                            <?php echo $error["email"]; ?>
                                         </p>
                                     <?php endif ?>
                                 </div>
@@ -123,11 +108,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="form-row">
                             <div class="col-md-12">
                                 <div class="form-label-group">
-                                    <input type="text" id="numberName" class="form-control" placeholder="9000000" name="number">
-                                    <label for="numberName">Số Lượng Admin</label>
-                                    <?php if (isset($error["number"])): ?>
+                                    <input type="text" id="phoneName" class="form-control" placeholder="9000000" name="phone">
+                                    <label for="phoneName">Số điện thoại</label>
+                                    <?php if (isset($error["phone"])): ?>
                                         <p clase="text-danger">
-                                            <?php echo $error["number"]; ?>
+                                            <?php echo $error["phone"]; ?>
                                         </p>
                                     <?php endif ?>
                                 </div>
@@ -138,21 +123,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="form-label-group">
-                                    <input type="text" id="saleName" class="form-control" placeholder="10%" name="sale" value="0">
-                                    <label for="saleName">Giảm Giá Admin</label>
+                                    <input type="password" id="passwordName" class="form-control" placeholder="*******" name="password" value="">
+                                    <label for="passwordName">Password</label>
+                                    <?php if (isset($error["password"])): ?>
+                                        <p clase="text-danger">
+                                            <?php echo $error["password"]; ?>
+                                        </p>
+                                    <?php endif ?>
                                 </div>
                             </div>
                             
                             <div class="col-md-6">
                                 <div class="form-label-group">
-                                    <input type="file" id="avatar" class="form-control" name="avatar">
-                                    <label for="fileName">Hình Ảnh Admin</label>
-                                    <?php if (isset($error["avatar"])): ?>
+                                    <input type="password" id="confirmPasswordName" class="form-control" placeholder="*******" name="confirmpassword" value="">
+                                    <label for="confirmPasswordName"> Xác nhận Password</label>
+                                    <?php if (isset($error["confirmpassword"])): ?>
                                         <p clase="text-danger">
-                                            <?php echo $error["avatar"]; ?>
+                                            <?php echo $error["confirmpassword"]; ?>
                                         </p>
                                     <?php endif ?>
-                                </div> 
                             </div>
                         </div>
                     </div>
@@ -160,10 +149,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="form-row">
                             <div class="col-md-12">
                                 <div class="form-label-group">
-                                    <textarea placeholder="Thông tin Admin" name="content" rows="4" type="text" class="form-control"></textarea>
-                                    <?php if (isset($error["price"])): ?>
+                                    <select type="text" id="category_id" class="form-control" placeholder="level" name="level">
+                                        <option value="0"> Admin </option>
+                                        <option value="1"> User </option>
+                                    </select>
+                                    <?php if (isset($error["level"])): ?>
                                         <p clase="text-danger">
-                                            <?php echo $error["price"]; ?>
+                                            <?php echo $error["level"]; ?>
                                         </p>
                                     <?php endif ?>
                                 </div>

@@ -37,7 +37,6 @@ $admin = $db->fetchAll("admin");
                                             <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 5px;" >STT</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 100px;" >Name</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 100px;" >Password</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 100px;" >ConfirmPassword</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 100px;" >Address</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 55px;" >Email</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 114px;" >Phone</th>
@@ -52,7 +51,6 @@ $admin = $db->fetchAll("admin");
                                                 <tr role="row" class="even">
                                                     <td class="sorting_1"><?php echo $stt?></td>
                                                     <td><?php echo $item['name']?></td>
-                                                    <td><?php echo $item['password']?></td>
                                                     <td><?php echo $item['password']?></td>
                                                     <td><?php echo $item['address']?></td>
                                                     <td><?php echo $item['email']?></td>

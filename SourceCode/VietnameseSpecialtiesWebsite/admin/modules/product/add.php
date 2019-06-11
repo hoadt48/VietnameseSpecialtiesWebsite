@@ -181,9 +181,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <div class="col-md-12">
                                 <div class="form-label-group">
                                     <textarea placeholder="Thông tin sản phẩm" name="content" rows="4" type="text" class="form-control"></textarea>
-                                    <?php if (isset($error["price"])): ?>
+                                    <?php if (isset($error["content"])): ?>
                                         <p clase="text-danger">
-                                            <?php echo $error["price"]; ?>
+                                            <?php echo $error["content"]; ?>
                                         </p>
                                     <?php endif ?>
                                 </div>

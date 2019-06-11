@@ -5,7 +5,8 @@ define('addPageMessage', array(
     'succes' => ' Thêm mới thành công ',
     'error' => ' Thêm mới thất bại ',
     'empty' => ' Dữ liệu không tồn tại ',
-    'alive' => ' Dữ liệu đã tồn tại '
+    'alive' => ' Dữ liệu đã tồn tại ',
+    'confirm_error' => ' Mật khẩu không trùng khớp '
 ));
 
 //edit page
@@ -13,7 +14,8 @@ define('editPageMessage', array(
     'succes' => ' Dữ liệu đã được thay đổi ',
     'error' => ' Dữ liệu không thay đổi ',
     'empty' => ' Dữ liệu không tồn tại ',
-    'alive' => ' Dữ liệu đã tồn tại '
+    'alive' => ' Dữ liệu đã tồn tại ',
+    'confirm_error' => ' Mật khẩu không trùng khớp '
 ));
 
 //delete page

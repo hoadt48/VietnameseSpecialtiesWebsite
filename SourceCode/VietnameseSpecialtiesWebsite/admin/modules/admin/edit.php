@@ -1,8 +1,6 @@
 <?php
 require_once __DIR__ . '\..\..\autoload\autoload.php';
 $open = "admin";
-$open = "category";
-$category = $db->fetchAll("category");
 $id = intval(getInput('id'));
 $Editadmin = $db->fetchID('admin', $id);
 if (empty($Editadmin)) {
@@ -12,10 +10,8 @@ if (empty($Editadmin)) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $data = [ 
         "name" => postInput('name'),
-        "password" => postInput('password'),
-        "address" => postInput("address"),
+        "password" => MD5('password'),
         "email" => postInput("email"),
-        "avatar" => postInput("avatar"),
         "phone" => postInput("phone"),
         "level" => postInput("level")
     ];
@@ -23,14 +19,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (postInput('name') == '') {
         $error['name'] = editPageMessage['empty'];
     }
-    if (postInput('password') == '') {
-        $data['password'] = $Editadmin['empty'];
-    }
-    if (postInput('address') == '') {
-        $error['address'] = editPageMessage['empty'];
-    }
     if (postInput('email') == '') {
-        $error['email'] = editPageMessage['empty'];
+        $error['email'] = addPageMessage['empty'];
+    }
+ else {
+        $is_check = $db->fetchOne("admin"," email = '".$data['email']."' ");
+        if ($is_check != NULL) {
+            if (postInput('email') != $Editadmin['email']) {
+                $error['email'] = editPageMessage['alive'];
+            }
+        }
+    }
+    if (postInput('password') == '') {
+        $error['password'] = editPageMessage['empty'];
+    }
+    if (postInput('confirmpassword') == '') {
+        $error['confirmpassword'] = editPageMessage['empty'];
     }
     if (postInput('phone') == '') {
         $error['phone'] = editPageMessage['empty'];
@@ -38,24 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (postInput('level') == '') {
         $error['level'] = editPageMessage['empty'];
     }
-
-    if (empty($error['name'])) {
-        if (isset($_FILES['avatar']) && $_FILES['avatar']['name'] != NULL) {
-            $file_name = $_FILES['avatar']['name'];
-            $file_tmp = $_FILES['avatar']['tmp_name'];
-            $file_type = $_FILES['avatar']['type'];
-            $file_erro = $_FILES['avatar']['error'];
-
-            if ($file_erro == 0) {
-                $uploads_dir = ROOT . "public/upload/admin/";
-                $data['avatar'] = $file_name;
-            }
-            move_uploaded_file($file_tmp, $uploads_dir . $file_name);
-        }
-        else {
-            $data['avatar'] = $Editadmin['avatar'];
-        }
-        _debug($data);
+    if (empty($error)) {
         $id_update = $db->update("admin", $data, array('id' => $id));
         if ($id_update) {
             $_SESSION['success'] = editPageMessage['succes'];
@@ -111,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="form-row">
                             <div class="col-md-12">
                                 <div class="form-label-group">
-                                    <input type="text" id="passwordName" class="form-control" placeholder="9000000" name="password" value="<?php echo $Editadmin['password']?>">
+                                    <input type="text" id="passwordName" class="form-control" placeholder="******" name="password" value="<?php echo $Editadmin['password']?>">
                                     <label for="passwordName">Password</label>
                                     <?php if (isset($error["password"])): ?>
                                         <p clase="text-danger">
@@ -126,11 +113,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="form-row">
                             <div class="col-md-12">
                                 <div class="form-label-group">
-                                    <input type="text" id="cPasswordName" class="form-control" placeholder="9000000" name="cPassword">
-                                    <label for="cPasswordName">Confirm Password</label>
-                                    <?php if (isset($error["cPassword"])): ?>
+                                    <input type="text" id="confirmpasswordName" class="form-control" placeholder="******" name="confirmpassword">
+                                    <label for="confirmpasswordName">Confirm Password</label>
+                                    <?php if (isset($error["confirmpassword"])): ?>
                                         <p clase="text-danger">
-                                            <?php echo $error["cPassword"]; ?>
+                                            <?php echo $error["confirmpassword"]; ?>
                                         </p>
                                     <?php endif ?>
                                 </div>
@@ -141,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="form-row">
                             <div class="col-md-12">
                                 <div class="form-label-group">
-                                    <input type="text" id="emailName" class="form-control" placeholder="9000000" name="email">
+                                    <input type="text" id="emailName" class="form-control" placeholder="bahao247@gmail.com" name="email" value="<?php echo $Editadmin['email']?>">
                                     <label for="emailName">Email</label>
                                     <?php if (isset($error["email"])): ?>
                                         <p clase="text-danger">
@@ -156,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="form-row">
                             <div class="col-md-12">
                                 <div class="form-label-group">
-                                    <input type="text" id="phoneName" class="form-control" placeholder="9000000" name="number" value="<?php echo $Editadmin['phone']?>">
+                                    <input type="text" id="phone" class="form-control" placeholder="9000000" name="phone" value="<?php echo $Editadmin['phone']?>">
                                     <label for="phoneName">Phone</label>
                                     <?php if (isset($error["phone"])): ?>
                                         <p clase="text-danger">
@@ -171,45 +158,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="form-row">
                             <div class="col-md-12">
                                 <div class="form-label-group">
-                                    <input type="text" id="levelName" class="form-control" placeholder="9000000" name="number" value="<?php echo $Editadmin['level']?>">
-                                    <label for="levelName">Phone</label>
+                                    <select type="text" id="category_id" class="form-control" placeholder="level" name="level">
+                                        <option value="0"> Admin </option>
+                                        <option value="1"> User </option>
+                                    </select>
                                     <?php if (isset($error["level"])): ?>
                                         <p clase="text-danger">
                                             <?php echo $error["level"]; ?>
                                         </p>
                                     <?php endif ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-row">
-                            <div class="col-md-6">
-                                <div class="form-label-group">
-                                    <input type="text" id="saleName" class="form-control" placeholder="10%" name="sale" value="<?php echo $Editadmin['sale']?>">
-                                    <label for="saleName">Giảm Giá Admin</label>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <div class="form-label-group">
-                                    <input type="file" id="avatar" class="form-control" name="avatar" value="<?php echo $Editadmin['avatar']?>">
-                                    <label for="fileName">Hình Ảnh Admin</label>
-                                    <img src="<?php echo uploads()?>admin/<?php echo $Editadmin['avatar']?>" width="40px" height="40px">
-                                    <?php if (isset($error["avatar"])): ?>
-                                        <p clase="text-danger">
-                                            <?php echo $error["avatar"]; ?>
-                                        </p>
-                                    <?php endif ?>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-row">
-                            <div class="col-md-12">
-                                <div class="form-label-group">
-                                    <textarea placeholder="Thông tin Admin" name="content" rows="4" type="text" class="form-control"><?php echo $Editadmin['content']?></textarea>
                                 </div>
                             </div>
                         </div>
