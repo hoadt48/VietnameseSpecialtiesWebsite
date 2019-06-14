@@ -95,7 +95,7 @@
                                  <td><img src="<?php echo uploads() ?>product/<?php echo $item['thunbar'];?>" width='150px' height='150px'></td>
                                 <td><?php echo $item['created_at'] ?></td>
                               <td><a href="edit.php?id=<?php echo $item['id'] ?>" class="btn btn-success">Sửa</a>
-                             <a href="delete.php?id=<?php echo $item['id'] ?>"class="btn btn-success">Xóa</a></td>
+                             <a href="delete.php?id=<?php echo $item['id'] ?>"class="btn btn-success" onclick="return confirm('Bạn có chắc chắn muốn xóa bài viết này không?')">Xóa</a></td>
                             </tr>
                          <?php $stt++; endforeach ?>
 

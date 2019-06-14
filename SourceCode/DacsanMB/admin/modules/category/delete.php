@@ -33,14 +33,12 @@
     
        }
 
-    else {
+     else {
 
      $_SESSION['error'] = "Sản phẩm còn! Bạn không thể xóa danh mục";
                  redirectAdmin('category');
     }
 
-
-
-//}
+    //}
     
   ?>

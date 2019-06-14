@@ -104,7 +104,7 @@ if(isset($admin['page']))
                                   <td><?php echo $item['address'] ?></td>
                                                                  <td><?php echo $item['level'] ?></td> -->
                               <td><a href="edit.php?id=<?php echo $item['id'] ?>" class="btn btn-success">Sửa</a>
-                             <a href="delete.php?id=<?php echo $item['id'] ?>"class="btn btn-success">Xóa</a></td>
+                             <a href="delete.php?id=<?php echo $item['id'] ?>"class="btn btn-success" onclick="return confirm('Bạn có muốn xóa nó k?')">Xóa</a></td>
                             </tr>
                          <?php $stt++; endforeach ?>
 

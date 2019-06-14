@@ -14,7 +14,7 @@
                 'price'=> postInput('price'),
                 'quantity'=> postInput('quantity'),
                 'content'=> postInput('content'),
-               /* 'thunbar'=>postInput('thunbar')*/
+                'sale_price'=>postInput('sale_price')
                /* 'thunbar'=>*/
                           
             ];
@@ -129,15 +129,23 @@
     </div>
   <div class="form-group">
     <label for="exampleInputPassword1"><h6>Giá sản phẩm</h6></label>
-    <input type="number" class="form-control col-md-15" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Giá" name="price">
+    <input type="number" class="form-control col-md-15" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Giá" name="price" min="0">
      <?php if (isset($error["price"])): ?>
       <p clase="text-danger color='F9900'"> <?php echo $error["price"]; ?> </p>
-      <?php endif ?>      
-                           
+      <?php endif ?>                         
   </div>
+
+<div class="form-group">
+    <label for="saleName"><h6>Giảm giá sản phẩm</h6></label>
+    <input type="number" class="form-control col-md-15" id="saleName" aria-describedby="emailHelp" placeholder="10%" name="sale_price" value="0" min="0">
+     <!-- <?php if (isset($error["sale_price"])): ?>
+                              <p clase="text-danger color='F9900'"> <?php echo $error["sale_price"]; ?> </p>
+                              <?php endif ?>  -->                        
+  </div>
+
  <div class="form-group">
     <label for="exampleInputPassword1"><h6>Số lượng</h6></label>
-    <input type="number" class="form-control col-md-15" id="exampleInputPassword1" placeholder="10%" name="quantity">   
+    <input type="number" class="form-control col-md-15" id="exampleInputPassword1" placeholder="10" name="quantity" min="0">   
      <?php if (isset($error["quantity"])): ?>
       <p clase="text-danger"> <?php echo $error["quantity"]; ?> </p>
       <?php endif ?>                      
@@ -145,8 +153,9 @@
 
    <div class="form-group">
     <label for="exampleInputEmail1"> <h6>Hình ảnh</h6> </label>
-    <input type="file" class="col-sm-9 form-control" id="thunbar" placeholder="Hình ảnh" name="thunbar"/>
+    <input type="file" onchange="preview_image(event)" class="col-sm-9 form-control" id="thunbar" placeholder="Hình ảnh" name="thunbar"/>
     <input type="hidden" name="img" id="img" />
+    <img id="output_image">
     <?php if (isset($error["thunbar"])): ?>
     <p clase="text-danger"> <?php echo $error["thunbar"]; ?> </p>
     <?php endif ?> 
@@ -185,5 +194,18 @@
 </div>
 <!-- /.content-wrapper -->
 </div>
+
+<script type='text/javascript'>
+  function preview_image(event) 
+  {
+     var reader = new FileReader();
+     reader.onload = function()
+     {
+      var output = document.getElementById('output_image');
+      output.src = reader.result;
+     }
+     reader.readAsDataURL(event.target.files[0]);
+  }
+</script>
 <!-- /#wrapper -->
 <?php require_once __DIR__. '/../../layouts/footer.php';?>

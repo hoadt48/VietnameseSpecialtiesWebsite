@@ -27,17 +27,19 @@
                 <?php echo $_SESSION['success'];
                     unset($_SESSION['success']);
                 ?>
+
             </li>
         </div>
         <?php endif?>
+
  
  
-<!--  <?php if (isset($_SESSION['error'])) : ?>
+ <?php if (isset($_SESSION['error'])) : ?>
  <div class="clearfix">
-    <li class="alert alert-danger"> <?php echo $_SESSION['success'];   ?></li>
+    <li class="alert alert-danger"> <?php echo $_SESSION['error'];   unset($_SESSION['error']);?></li>
      </div>
 <?php endif ?>
-           </div>   -->
+           </div>  
  <!--  -->
   
         
@@ -76,6 +78,7 @@
                                 <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 80px;">STT</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 300px;">Name</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 200px;">Slug</th>
+                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 200px;">Home</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 180px;">Created_at</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 120px;">Action</th>
                             </tr>
@@ -87,9 +90,14 @@
                                 <td class="sorting_1"><?php echo $stt ?></td>
                                 <td><?php echo $item['name'] ?></td>
                                 <td><?php echo $item['slug'] ?></td>
+                                <td>
+                                    <a href="home.php?id= <?php echo $item['id'] ?>" class="btn btn-xs <?php echo $item['home']==1 ?'btn-info':'btn-danger'?>">
+                                        <?php echo $item['home']==1?'Hiển thị':'Không' ?>
+                                    </a>
+                                </td>
                                 <td><?php echo $item['created_at'] ?></td>
                               <td><a href="edit.php?id=<?php echo $item['id'] ?>" class="btn btn-success">Sửa</a>
-                             <a href="delete.php?id=<?php echo $item['id'] ?>"class="btn btn-success">Xóa</a></td>
+                             <a href="delete.php?id=<?php echo $item['id'] ?>"class="btn btn-success" onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục không?')">Xóa</a></td>
                             </tr>
                          <?php $stt++; endforeach ?>
 

@@ -129,4 +129,17 @@ if (!function_exists('redirect')) {
     }
 
 }
+
+
+function formatPrice($number){
+    $number=intval($number);
+    return $number= number_format($number,0,'.','.')." Đ";
+ 
+}
+function formatpricesale($number,$sale_price){
+    $number=intval($number);
+    $sale_price=intval($sale_price);
+    $price=$number*(100-$sale_price)/100;
+    return formatprice($price);
+}
 ?>

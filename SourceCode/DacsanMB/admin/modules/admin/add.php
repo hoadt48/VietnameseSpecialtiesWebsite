@@ -38,9 +38,6 @@ $open ='category';
             }
           }
 
-
-
-
             if(postInput('phone')=='')
          {
             $error['phone']=" Vui lòng nhập lại số điện thoại ";

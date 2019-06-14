@@ -25,6 +25,7 @@
                 'quantity'=> postInput('quantity'),
                 'thunbar'=> $EditProduct['thunbar'],  
                 'content'=> postInput('content'),
+                'sale_price'=>postInput('sale_price')
               
             ];
          $error=[];
@@ -107,7 +108,7 @@
 <div id="content-wrapper">
     <div class="container-fluid">
         <!-- Page Content -->
-        <h1>Thêm mới sản phẩm</h1>
+        <h1>Sửa sản phẩm</h1>
         <hr>
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
@@ -151,12 +152,21 @@
     </div>
   <div class="form-group">
     <label for="exampleInputPassword1"><h6>Giá sản phẩm</h6></label>
-    <input type="number" class="form-control col-md-15" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Giá" name="price" value="<?php echo $EditProduct['price'] ; ?>">
+    <input type="number" class="form-control col-md-15" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Giá" name="price" min="0"> value="<?php echo $EditProduct['price'] ; ?>">
      <?php if (isset($error["price"])): ?>
       <p clase="text-danger "> <?php echo $error["price"]; ?> </p>
       <?php endif ?>      
                            
   </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1"><h6>Giảm giá sản phẩm</h6></label>
+    <input type="number" class="form-control col-md-15" id="sale" placeholder="10%"  min="0" name="sale_price" value="<?php echo $EditProduct['sale_price'] ; ?>">   
+     <?php if (isset($error["sale_price"])): ?>
+      <p clase="text-danger"> <?php echo $error["sale_price"]; ?> </p>
+      <?php endif ?>                      
+  </div>
+
 <div class="form-group">
     <label for="exampleInputPassword1"><h6>Số lượng</h6></label>
     <input type="number" class="form-control col-md-15" id="exampleInputPassword1" placeholder="0" name="quantity" value="<?php echo $EditProduct['quantity'] ; ?>">   
@@ -166,8 +176,8 @@
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1"><h6>Hình ảnh</h6></label>
-    <input type="file" class="form-control col-md-15" id="thunbar" onchange="clearOldThunbar()" placeholder="hình ảnh" name="thunbar">  
-    <span id="oldThunbar"><?php echo $EditProduct['thunbar']; ?></span>
+    <input type="file" class="form-control col-md-15" id="thunbar" onchange="preview_image(event)" placeholder="hình ảnh" name="thunbar">  
+     <img id="output_image" src="<?php echo uploads() ?>product/<?php echo $EditProduct['thunbar'];?>">
     <?php if (isset($error["unit"])): ?>
       <p clase="text-danger"> <?php echo $error["unit"]; ?> </p>
       <?php endif ?>                     
@@ -202,10 +212,16 @@
 <!-- /.content-wrapper -->
 </div>
 <!-- /#wrapper -->
-<script type="text/javascript">
-  function clearOldThunbar(){
-    var oldThunbar=document.getElementById('oldThunbar');
-    oldThunbar.value='';
+<script type='text/javascript'>
+  function preview_image(event) 
+  {
+     var reader = new FileReader();
+     reader.onload = function()
+     {
+      var output = document.getElementById('output_image');
+      output.src = reader.result;
+     }
+     reader.readAsDataURL(event.target.files[0]);
   }
 </script>
 <?php require_once __DIR__. '/../../layouts/footer.php';?>

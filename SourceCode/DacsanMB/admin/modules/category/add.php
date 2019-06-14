@@ -8,7 +8,8 @@
     { 
             $data=
             [
-                'name'=> postInput('name')
+                'name'=> postInput('name'),
+                'slug'=> to_slug(postInput('name'))
                 
               
             ];
@@ -69,7 +70,9 @@
                     <?php endif ?>      
                            
                     </div>
-                    <button type="submit" class="btn btn-success">Lưu</button>
+               
+
+                   <button type="submit" class="btn btn-success">Lưu</button>
                 </form>
             </div>
         </div>

@@ -17,11 +17,6 @@
     // kiểm tra danh mục có sản phẩm chưa? nếu có thì không được xóa/
 
 
-
-
-
-
-
     $num= $db->delete('product',$id);
         if($num>0)
         {

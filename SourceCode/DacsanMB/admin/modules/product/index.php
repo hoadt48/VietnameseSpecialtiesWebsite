@@ -3,8 +3,7 @@
     require_once __DIR__. '\..\..\autoload\autoload.php';
     
     /* $product = $db ->fetchAll('product');*/
-    
-    
+  
     if (isset($_GET['page'])) {
     
      $p=$_GET['page'];
@@ -12,7 +11,6 @@
     else {
      $p=1;
     }
-    
     $select="select product.*, category.name as namecat from product left join category on category.id=product.category_id";
     $product=$db->fetchJone('product',$select,$p,4,true);
     
@@ -22,13 +20,14 @@
      unset($product['page']);
     }
     
+
     
     ?>
 <?php require_once __DIR__. '\..\..\layouts\header.php';?>
 <div id="content-wrapper">
     <div class="container-fluid">
         <!-- Breadcrumbs-->
-        <h1>Danh sách danh mục đặc sản theo các tỉnh</h1>
+        <h1>Danh sách đặc sản theo các tỉnh</h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="<?php echo admin_page() ?>">Dashboard </a>
@@ -80,6 +79,7 @@
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 200px;">Tên sản phẩm</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 100px;">Danh mục</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 180px;">Giá sản phẩm </th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 180px;">Giảm giá</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 180px;">Số lượng </th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 180px;">Hình ảnh</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 300px;">Nội dung </th>
@@ -93,11 +93,12 @@
                                         <td><?php echo $item['name'] ?></td>
                                         <td><?php echo $item['namecat'] ?></td>
                                         <td><?php echo $item['price'] ?></td>
+                                        <td><?php echo $item['sale_price'] ?></td>
                                         <td><?php echo $item['quantity'] ?></td>
                                         <td><img src="<?php echo uploads() ?>product/<?php echo $item['thunbar'];?>" width='150px' height='150px'></td>
                                         <td><?php echo $item['content'] ?></td>
                                         <td><a href="edit.php?id=<?php echo $item['id'] ?>" class="btn btn-success">Sửa</a>
-                                            <a href="delete.php?id=<?php echo $item['id'] ?>"class="btn btn-success">Xóa</a>
+                                            <a href="delete.php?id=<?php echo $item['id'] ?>"class="btn btn-success" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này không?')">Xóa</a>
                                         </td>
                                     </tr>
                                     <?php $stt++; endforeach ?>
