@@ -1,0 +1,1 @@
+start \\dcv-data\DCV\03.Software\OS\WINDOWS-10\Windows\setup.exe /auto upgrade /showoobe None /DynamicUpdate disable /pkey R8VRN-M3XF4-X3W9X-HYQJY-BBH2F
